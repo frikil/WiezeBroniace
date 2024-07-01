@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://ru3v282aavki"]
+[gd_scene load_steps=11 format=3 uid="uid://ru3v282aavki"]
 
 [ext_resource type="Script" path="res://scenes/levels/wave_script.gd" id="1_ffhj3"]
 [ext_resource type="Texture2D" uid="uid://cheo7c7r7ax3g" path="res://textures/terrain_textures.png" id="2_hb67e"]
 [ext_resource type="Script" path="res://resources/wave.gd" id="2_susf2"]
 [ext_resource type="Texture2D" uid="uid://d2jwspvygipo6" path="res://textures/entities_textures.png" id="3_e2ukw"]
-[ext_resource type="PackedScene" uid="uid://p2cp4t8spvsi" path="res://scenes/entities/base_enemy.tscn" id="3_kym1t"]
 
 [sub_resource type="Curve2D" id="Curve2D_1ihur"]
 bake_interval = 10.0
@@ -19,7 +18,7 @@ wave = PackedVector2Array(1, 10, 2, 5, 1, 4)
 
 [sub_resource type="Resource" id="Resource_41u0y"]
 script = ExtResource("2_susf2")
-wave = PackedVector2Array()
+wave = PackedVector2Array(1, 5)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3176w"]
 texture = ExtResource("2_hb67e")
@@ -44,7 +43,7 @@ sources/1 = SubResource("TileSetAtlasSource_8rgc2")
 
 [node name="waveCooldownTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.4
+wait_time = 0.2
 one_shot = true
 
 [node name="Path" type="Path2D" parent="."]
@@ -52,9 +51,6 @@ scale = Vector2(0.6, 0.6)
 curve = SubResource("Curve2D_1ihur")
 script = ExtResource("1_ffhj3")
 wave_controller = Array[ExtResource("2_susf2")]([SubResource("Resource_22qai"), SubResource("Resource_41u0y")])
-
-[node name="BaseEnemy" parent="Path" instance=ExtResource("3_kym1t")]
-position = Vector2(-32, 288)
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
