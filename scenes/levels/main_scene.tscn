@@ -1,14 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://xrm2er0gekb4"]
+[gd_scene load_steps=12 format=3 uid="uid://ru3v282aavki"]
 
 [ext_resource type="Script" path="res://scenes/levels/wave_script.gd" id="1_ffhj3"]
 [ext_resource type="Texture2D" uid="uid://cheo7c7r7ax3g" path="res://textures/terrain_textures.png" id="2_hb67e"]
+[ext_resource type="Script" path="res://resources/wave.gd" id="2_susf2"]
 [ext_resource type="Texture2D" uid="uid://d2jwspvygipo6" path="res://textures/entities_textures.png" id="3_e2ukw"]
+[ext_resource type="PackedScene" uid="uid://p2cp4t8spvsi" path="res://scenes/entities/base_enemy.tscn" id="3_kym1t"]
 
 [sub_resource type="Curve2D" id="Curve2D_1ihur"]
+bake_interval = 10.0
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1.19316, 301.244)
+"points": PackedVector2Array(0, 0, 0, 0, -32, 288, 0, 0, 0, 0, 288, 288, 0, 0, 0, 0, 288, 544, 0, 0, 0, 0, 544, 544, 0, 0, 0, 0, 544, 352, 0, 0, 0, 0, 1056, 352, 0, 0, 0, 0, 1056, 992, 0, 0, 0, 0, 1440, 992, 0, 0, 0, 0, 1440, 864, 0, 0, 0, 0, 1248, 864, 0, 0, 0, 0, 1248, 608, 0, 0, 0, 0, 1440, 608, 0, 0, 0, 0, 1440, 352, 0, 0, 0, 0, 1248, 352, 0, 0, 0, 0, 1248, 224, 0, 0, 0, 0, 1952, 224)
 }
-point_count = 1
+point_count = 16
+
+[sub_resource type="Resource" id="Resource_22qai"]
+script = ExtResource("2_susf2")
+wave = PackedVector2Array(1, 10, 2, 5, 1, 4)
+
+[sub_resource type="Resource" id="Resource_41u0y"]
+script = ExtResource("2_susf2")
+wave = PackedVector2Array()
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3176w"]
 texture = ExtResource("2_hb67e")
@@ -31,15 +42,24 @@ sources/1 = SubResource("TileSetAtlasSource_8rgc2")
 
 [node name="MainScene" type="Node"]
 
+[node name="waveCooldownTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.4
+one_shot = true
+
 [node name="Path" type="Path2D" parent="."]
-position = Vector2(0, -128.059)
-scale = Vector2(1.67622, 1.98529)
+scale = Vector2(0.6, 0.6)
 curve = SubResource("Curve2D_1ihur")
 script = ExtResource("1_ffhj3")
+wave_controller = Array[ExtResource("2_susf2")]([SubResource("Resource_22qai"), SubResource("Resource_41u0y")])
+
+[node name="BaseEnemy" parent="Path" instance=ExtResource("3_kym1t")]
+position = Vector2(-32, 288)
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
 texture_repeat = 1
+scale = Vector2(0.6, 0.6)
 tile_set = SubResource("TileSet_swh06")
 format = 2
 layer_0/name = "BackGround"

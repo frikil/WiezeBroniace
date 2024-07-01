@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="waveResource" load_steps=2 format=3 uid="uid://bvrvglnrqoork"]
+
+[ext_resource type="Script" path="res://resources/wave.gd" id="1_465hl"]
+
+[resource]
+script = ExtResource("1_465hl")
+wave = PackedVector2Array()

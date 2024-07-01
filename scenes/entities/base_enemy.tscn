@@ -8,6 +8,7 @@ size = Vector2(20, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vhbqb"]
 
 [node name="BaseEnemy" type="PathFollow2D"]
+z_index = 20
 rotates = false
 loop = false
 script = ExtResource("1_f6ufm")

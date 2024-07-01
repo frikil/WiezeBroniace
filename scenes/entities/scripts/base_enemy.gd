@@ -8,7 +8,7 @@ extends PathFollow2D
 signal EndOfPath(damage)
 
 func _process(delta):
-	progress += speed * delta
+	progress += speed * delta * 60
 	if progress_ratio == 1:
 		dealDamage(health)
 		emit_signal("EndOfPath", health)
