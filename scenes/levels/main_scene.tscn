@@ -1,3 +1,15 @@
-[gd_scene format=3 uid="uid://cawo32oem0qyb"]
+[gd_scene load_steps=3 format=3 uid="uid://ru3v282aavki"]
 
-[node name="MainScene" type="Node2D"]
+[ext_resource type="Script" path="res://scenes/levels/wave_script.gd" id="1_ffhj3"]
+
+[sub_resource type="Curve2D" id="Curve2D_1ihur"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 300, 0, 0, 0, 0, 320, 304, 0, 0, 0, 0, 320, 64, 0, 0, 0, 0, 512, 64, 0, 0, 0, 0, 512, 192, 0, 0, 0, 0, 768, 192, 0, 0, 0, 0, 768, 512, 0, 0, 0, 0, 256, 512, 0, 0, 0, 0, 256, 448, 0, 0, 0, 0, 128, 448, 0, 0, 0, 0, 128, 608, 0, 0, 0, 0, 1024, 608, 0, 0, 0, 0, 1024, 384, 0, 0, 0, 0, 1152, 384)
+}
+point_count = 14
+
+[node name="MainScene" type="Node"]
+
+[node name="Path" type="Path2D" parent="."]
+curve = SubResource("Curve2D_1ihur")
+script = ExtResource("1_ffhj3")
