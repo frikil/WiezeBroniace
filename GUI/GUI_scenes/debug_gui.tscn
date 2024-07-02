@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://biwyg7u1paiy3"]
+
+[ext_resource type="Script" path="res://GUI/GUI_scripts/debug_gui.gd" id="1_4jn8f"]
+
+[node name="debug_gui" type="CanvasLayer"]
+script = ExtResource("1_4jn8f")
+
+[node name="start" type="Button" parent="."]
+offset_left = 1088.0
+offset_top = 600.0
+offset_right = 1144.0
+offset_bottom = 640.0
+text = "start"
+
+[node name="turret_test" type="Button" parent="."]
+offset_left = 8.0
+offset_top = 600.0
+offset_right = 64.0
+offset_bottom = 640.0
+toggle_mode = true
+text = "turret_test"
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="turret_test" to="." method="_on_turret_test_pressed"]
