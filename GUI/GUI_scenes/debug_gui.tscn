@@ -22,3 +22,4 @@ text = "turret_test"
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="turret_test" to="." method="_on_turret_test_pressed"]
+[connection signal="toggled" from="turret_test" to="." method="_on_turret_test_toggled"]

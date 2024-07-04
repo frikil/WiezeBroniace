@@ -13,8 +13,6 @@ var enemy_can_spawn : bool
 var can_emit_signal : bool
 var round_array : Array
 
-signal round_over
-
 func _ready():
 	wave_counter = 0
 	enemy_can_spawn = false
@@ -30,12 +28,11 @@ func _process(delta):
 		else:
 			enemy_can_spawn = false
 			wave_counter += 1
-			print(wave_controller.size(), "/", wave_counter)
 			if wave_counter != wave_controller.size():
 				can_emit_signal = true
 	
 	if can_emit_signal and get_child_count() == 0 and !enemy_can_spawn:
-		round_over.emit()
+		EventBus.roundOver.emit()
 		can_emit_signal = false
 
 func startRound():

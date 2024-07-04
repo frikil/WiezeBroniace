@@ -1,4 +1,5 @@
 extends PathFollow2D
+class_name BaseEnemy
 
 @export_category("properties")
 @export var health : float = 10.0
