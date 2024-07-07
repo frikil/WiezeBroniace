@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://p2cp4t8spvsi"]
+[gd_scene load_steps=4 format=3 uid="uid://w6rknh1sqe8t"]
 
-[ext_resource type="Script" path="res://scenes/entities/scripts/base_enemy.gd" id="1_f6ufm"]
+[ext_resource type="Script" path="res://scenes/entities/scripts/base_enemy.gd" id="1_38l5p"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ed5nx"]
 size = Vector2(20, 20)
@@ -11,9 +11,12 @@ size = Vector2(20, 20)
 z_index = 20
 rotates = false
 loop = false
-script = ExtResource("1_f6ufm")
+script = ExtResource("1_38l5p")
+health = 8.0
+speed = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 0, 1)
 texture = SubResource("PlaceholderTexture2D_ed5nx")
 
 [node name="Area2D" type="Area2D" parent="."]

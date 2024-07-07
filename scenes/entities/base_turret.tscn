@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://b01sgm3l7cb07"]
+
+[ext_resource type="Script" path="res://scenes/entities/scripts/base_turret.gd" id="1_0cdhg"]
+[ext_resource type="Texture2D" uid="uid://cc80htp5mxkcs" path="res://textures/circle.png" id="2_2hsu6"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_nuk6i"]
+size = Vector2(40, 40)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hverj"]
+radius = 200.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5a8d6"]
+size = Vector2(40, 40)
+
+[node name="BaseTurret" type="Node2D"]
+z_index = 2
+script = ExtResource("1_0cdhg")
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = SubResource("PlaceholderTexture2D_nuk6i")
+
+[node name="ShootingRange" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShootingRange"]
+shape = SubResource("CircleShape2D_hverj")
+
+[node name="TurretHitbox" type="StaticBody2D" parent="."]
+collision_mask = 49
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TurretHitbox"]
+shape = SubResource("RectangleShape2D_5a8d6")
+
+[node name="RangeTexture" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.470588)
+z_index = -1
+scale = Vector2(0.815, 0.815)
+texture = ExtResource("2_2hsu6")
+
+[connection signal="area_entered" from="ShootingRange" to="." method="_on_shooting_range_area_entered"]
+[connection signal="area_exited" from="ShootingRange" to="." method="_on_shooting_range_area_exited"]
+[connection signal="mouse_entered" from="TurretHitbox" to="." method="_on_turret_hitbox_mouse_entered"]
+[connection signal="mouse_exited" from="TurretHitbox" to="." method="_on_turret_hitbox_mouse_exited"]

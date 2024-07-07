@@ -1,5 +1,5 @@
 extends PathFollow2D
-
+class_name BaseEnemy
 
 @export_category("properties")
 @export var health : float = 10.0
@@ -12,9 +12,9 @@ func _process(delta):
 	if progress_ratio == 1:
 		dealDamage(health)
 		emit_signal("EndOfPath", health)
-		print(EndOfPath)
 		queue_free()
 
-func dealDamage(health):
-	# TODO
-	pass
+func dealDamage(damage):
+	GlobalVariables.hp -= damage
+	
+	# TODO more logic
