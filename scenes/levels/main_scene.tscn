@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ru3v282aavki"]
+[gd_scene load_steps=12 format=3 uid="uid://xrm2er0gekb4"]
 
 [ext_resource type="Script" path="res://scenes/levels/wave_script.gd" id="1_ffhj3"]
 [ext_resource type="Texture2D" uid="uid://cheo7c7r7ax3g" path="res://textures/terrain_textures.png" id="2_hb67e"]
